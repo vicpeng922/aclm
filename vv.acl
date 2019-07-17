@@ -1,0 +1,12 @@
+var direct = "DIRECT;";
+
+var wall_proxy = function(){ return "PROXY 127.0.0.1:9090; direct"; };
+
+function FindProxyForURL(url, host) {
+if(dnsDomainIs(host, ".163.com") || dnsDomainIs(host, ".126.net")) {
+if(dnsDomainIs(host, ".music.163.com") || dnsDomainIs(host, ".music.126.net")) {
+return wall_proxy();
+}
+}
+return direct;
+}
